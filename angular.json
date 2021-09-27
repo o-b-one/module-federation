@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "projects": {
+    "robust-micro-frontend": {
+      "projectType": "application",
+      "root": "apps/robust-micro-frontend",
+      "sourceRoot": "apps/robust-micro-frontend/src",
+      "prefix": "robust-micro-frontend",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/robust-micro-frontend",
+            "index": "apps/robust-micro-frontend/src/index.html",
+            "main": "apps/robust-micro-frontend/src/main.ts",
+            "polyfills": "apps/robust-micro-frontend/src/polyfills.ts",
+            "tsConfig": "apps/robust-micro-frontend/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/robust-micro-frontend/src/favicon.ico",
+              "apps/robust-micro-frontend/src/assets"
+            ],
+            "styles": ["apps/robust-micro-frontend/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/robust-micro-frontend/src/environments/environment.ts",
+                  "with": "apps/robust-micro-frontend/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "robust-micro-frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "robust-micro-frontend:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "robust-micro-frontend:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/robust-micro-frontend/src/**/*.ts",
+              "apps/robust-micro-frontend/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/robust-micro-frontend"],
+          "options": {
+            "jestConfig": "apps/robust-micro-frontend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "robust-micro-frontend-e2e": {
+      "root": "apps/robust-micro-frontend-e2e",
+      "sourceRoot": "apps/robust-micro-frontend-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/robust-micro-frontend-e2e/cypress.json",
+            "devServerTarget": "robust-micro-frontend:serve:development",
+            "tsConfig": "apps/robust-micro-frontend-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "robust-micro-frontend:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/robust-micro-frontend-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "robust-micro-frontend"
+}
