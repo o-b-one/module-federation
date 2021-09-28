@@ -15,10 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@robust-micro-frontend/auth": ["libs/auth/src/index.ts"],
-      "@robust-micro-frontend/feed": ["apps/feed/public-api.ts"],
-      "@robust-micro-frontend/navigation-bar": ["apps/navigation-bar/public-api.ts"],
-      "@robust-micro-frontend/user": ["apps/user/public-api.ts"]
+      "@mfe/auth": ["libs/auth/src/index.ts"],
+      "@mfe/feed": ["apps/feed/public-api.ts"],
+      "@mfe/navigation-bar": ["apps/navigation-bar/public-api.ts"],
+      "@mfe/user": ["apps/user/public-api.ts"],
+      "@mfe/login": ["apps/login/public-api.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

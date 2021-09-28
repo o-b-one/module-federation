@@ -37,6 +37,13 @@
       "tags": [],
       "implicitDependencies": ["feed"]
     },
+    "login": {
+      "tags": []
+    },
+    "login-e2e": {
+      "tags": [],
+      "implicitDependencies": ["login"]
+    },
     "navigation-bar": {
       "tags": []
     },

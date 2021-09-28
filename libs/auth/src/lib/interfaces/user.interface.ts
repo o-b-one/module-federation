@@ -3,4 +3,6 @@ export interface IUser{
     name: string;
     xsrf: string;
     roles: string[];
+    loading?: boolean;
+    authorized: boolean;
 };

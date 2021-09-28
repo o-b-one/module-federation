@@ -11,7 +11,6 @@ import { authFeatureKey } from './store/auth.selector';
     CommonModule,
     StoreModule.forFeature(authFeatureKey, authReducer),
     EffectsModule.forFeature([AuthEffect])
-
   ],
 })
 export class AuthModule {}

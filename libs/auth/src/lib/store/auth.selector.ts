@@ -5,6 +5,8 @@ import { IAuthState } from './auth.reducer';
 
 export const authFeatureKey = 'auth'
 
-export const selectAuthFeature = (state: {[authFeatureKey]:  IAuthState} ) => state[authFeatureKey];
+export interface IStateWithAuthFeature {[authFeatureKey]:  IAuthState};
 
-export const isAuthorized = createSelector(selectAuthFeature, state => state.authorized)
+export const selectAuthFeature = (state: IStateWithAuthFeature ) => state[authFeatureKey];
+
+export const isAuthorized = createSelector(selectAuthFeature, state => state.authorized);

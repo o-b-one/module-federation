@@ -8,19 +8,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import {AuthModule} from "@mfe/auth";
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
       maxAge: 50,
-    })
+    }),
+    EffectsModule.forRoot([]),
+    BrowserAnimationsModule,
+    AuthModule,
+    RouterModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

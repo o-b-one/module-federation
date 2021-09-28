@@ -1,21 +1,21 @@
-import { createReducer, on  } from '@ngrx/store';
-import { IUser } from '../interfaces/user.interface';
-import { AuthroizationFailed, AuthroizationSucceed } from './auth.action';
+import {createReducer, on} from '@ngrx/store';
+import {IUser} from '../interfaces/user.interface';
+import {AuthroizationFailed, AuthroizationStarted, AuthroizationSucceed} from './auth.action';
 
-export interface IAuthState  extends IUser {
-    authorized: boolean;
-}
+export type IAuthState = IUser
 
 export const initialState: IAuthState = {
-    id: "",
-    authorized: false,
-    name: "",
-    xsrf: "",
-    roles: []
+  id: "",
+  authorized: false,
+  loading: false,
+  name: "",
+  xsrf: "",
+  roles: []
 };
 
 export const authReducer = createReducer(
   initialState,
-  on(AuthroizationSucceed, (state, { user }) => ( {...state, ...user, authorized: true})),
+  on(AuthroizationStarted, (state) => ({...state, loading: true})),
+  on(AuthroizationSucceed, (state, {user}) => ({...state, ...user, loading: false})),
   on(AuthroizationFailed, _ => ({...initialState}))
 );
