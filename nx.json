@@ -27,12 +27,36 @@
     ]
   },
   "projects": {
-    "robust-micro-frontend": {
+    "auth": {
       "tags": []
     },
-    "robust-micro-frontend-e2e": {
+    "feed": {
+      "tags": []
+    },
+    "feed-e2e": {
       "tags": [],
-      "implicitDependencies": ["robust-micro-frontend"]
+      "implicitDependencies": ["feed"]
+    },
+    "navigation-bar": {
+      "tags": []
+    },
+    "navigation-bar-e2e": {
+      "tags": [],
+      "implicitDependencies": ["navigation-bar"]
+    },
+    "shell": {
+      "tags": []
+    },
+    "shell-e2e": {
+      "tags": [],
+      "implicitDependencies": ["shell"]
+    },
+    "user": {
+      "tags": []
+    },
+    "user-e2e": {
+      "tags": [],
+      "implicitDependencies": ["user"]
     }
   }
 }
