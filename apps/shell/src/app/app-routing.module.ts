@@ -26,13 +26,26 @@ import {environment} from "../environments/environment";
           {
             path: '',
             outlet: 'navbar',
-            loadChildren: () => import('@mfe/navigation-bar').then(m => m.BootstrapModule)
+            loadChildren: () => loadRemoteModule({
+              remoteEntry: environment.micro_frontend.user,
+              remoteName: 'user',
+              exposedModule: './public-api'
+            }).then(m => m.BootstrapModule)
+              // import('@mfe/navigation-bar').then(m => m.BootstrapModule)
           },
           {
             path: 'user',
             loadChildren: () => loadRemoteModule({
                 remoteEntry: environment.micro_frontend.user,
                 remoteName: 'user',
+                exposedModule: './public-api'
+              }).then(m => m.BootstrapModule)
+          },
+          {
+            path: 'feed',
+            loadChildren: () => loadRemoteModule({
+                remoteEntry: environment.micro_frontend.feed,
+                remoteName: 'feed',
                 exposedModule: './public-api'
               }).then(m => m.BootstrapModule)
           },

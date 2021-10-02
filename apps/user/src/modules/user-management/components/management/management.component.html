@@ -1,8 +1,22 @@
-<form>
-    <mat-form-field appearance="standard">
-<!--    <mat-label>Standard form field</mat-label>-->
-    <input matInput placeholder="Placeholder">
-<!--    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
-<!--    <mat-hint>Hint</mat-hint>-->
-  </mat-form-field>
-</form>
+<section *ngIf="user$ | ngrxPush as user">
+  <mfe-user-info [userId]="user.id"></mfe-user-info>
+  <form [formGroup]="userDetailsForm" class="centered">
+    <ng-container *ngFor="let item of userDetailsForm.controls | keyvalue ">
+      <mat-form-field appearance="standard">
+        <mat-label>{{item.key}}</mat-label>
+        <ng-container [ngSwitch]="item.key">
+          <mat-select *ngSwitchCase="'roles'" [formControlName]="item.key" multiple>
+            <mat-option *ngFor="let role of roles"
+                        [value]="role.code">
+              {{role.display}}
+            </mat-option>
+          </mat-select>
+          <input matInput
+                 *ngSwitchDefault
+                 [placeholder]="item.key"
+                 [formControlName]="item.key">
+        </ng-container>
+      </mat-form-field>
+    </ng-container>
+  </form>
+</section>

@@ -1,4 +1,7 @@
 .application-wrapper {
   display: flex;
   flex-direction: column;
+  .content-wrapper{
+    margin: 0 8px;
+  }
 }

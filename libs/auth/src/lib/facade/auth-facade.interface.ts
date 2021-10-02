@@ -1,8 +1,8 @@
 import {Observable} from "rxjs";
-import {IUser} from "../..";
+import {IAuthState} from "../store/auth.reducer";
 
 export interface IAuthFacade{
-  authorize(): Observable<IUser>;
+  authorize(): Observable<IAuthState>;
   isAuthorized(): Observable<boolean>;
-  getUser(): Observable<IUser>;
+  getActiveUser(): Observable<IAuthState>;
 }

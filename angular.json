@@ -331,7 +331,7 @@
 							"apps/navigation-bar/src/assets"
 						],
 						"styles": [
-							"./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+							"./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
 							"apps/navigation-bar/src/styles.scss"
 						],
 						"scripts": [],
@@ -472,7 +472,7 @@
 							"apps/shell/src/assets"
 						],
 						"styles": [
-							"./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+							"./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
 							"apps/shell/src/styles.scss"
 						],
 						"scripts": [],
@@ -613,8 +613,9 @@
 							"apps/user/src/assets"
 						],
 						"styles": [
-							"apps/user/src/styles.scss"
-						],
+							"apps/user/src/styles.scss",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
+            ],
 						"scripts": [],
 						"customWebpackConfig": {
 							"path": "apps/user/webpack.config.js"

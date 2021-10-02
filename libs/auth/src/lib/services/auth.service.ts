@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Observable, of, throwError} from "rxjs";
 import {IUser} from "../interfaces/user.interface";
 import {switchMap} from "rxjs/operators";
+import {USERS} from "../../../../../apps/user/src/modules/user-management/constants/users.mock";
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,11 @@ export class AuthService {
   public authorizeUser(): Observable<IUser> {
     return this.isAuthorized().pipe(
       switchMap(authorized => {
+        const user = USERS.find(u => u.id === '1111');
         return authorized
           ? of({
-            authorized: true,
-            id: '1111',
-            name: 'Orel Balilti',
-            xsrf: 'noWayThisIsAXSRFToken',
-            roles: ['adm', 'user', 'beta'],
+            ...user,
+            ...{authorized: true},
             ...this.getStoredData()
           })
           : throwError('NOT_AUTHORIZED');

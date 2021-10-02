@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
+    "strictPropertyInitialization": false,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -18,9 +19,10 @@
       "@mfe/auth": ["libs/auth/src/index.ts"],
       "@mfe/feed": ["apps/feed/public-api.ts"],
       "@mfe/navigation-bar": ["apps/navigation-bar/public-api.ts"],
-      "@mfe/user": ["apps/user/public-api.ts"],
+      "@mfe/user": ["apps/user/public-api.d.ts"],
       "@mfe/login": ["apps/login/public-api.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"],
+  "include": ["*.d.ts"]
 }

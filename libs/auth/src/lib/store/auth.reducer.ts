@@ -2,7 +2,9 @@ import {createReducer, on} from '@ngrx/store';
 import {IUser} from '../interfaces/user.interface';
 import {AuthroizationFailed, AuthroizationStarted, AuthroizationSucceed} from './auth.action';
 
-export type IAuthState = IUser
+export interface IAuthState extends IUser{
+  authorized: boolean;
+}
 
 export const initialState: IAuthState = {
   id: "",

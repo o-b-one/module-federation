@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 import {BootstrapModule} from "../modules/bootstrap/bootstrap.module";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AuthModule} from "../../../../libs/auth/src";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,8 +16,11 @@ import {EffectsModule} from "@ngrx/effects";
     BrowserModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
     StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({}),
     EffectsModule.forRoot([]),
-    BootstrapModule
+    AuthModule,
+    BrowserAnimationsModule,
+    BootstrapModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

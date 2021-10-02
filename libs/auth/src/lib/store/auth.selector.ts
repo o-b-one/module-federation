@@ -9,4 +9,4 @@ export interface IStateWithAuthFeature {[authFeatureKey]:  IAuthState};
 
 export const selectAuthFeature = (state: IStateWithAuthFeature ) => state[authFeatureKey];
 
-export const isAuthorized = createSelector(selectAuthFeature, state => state.authorized);
+export const isAuthorized = createSelector(selectAuthFeature, state => state.authorized || false);

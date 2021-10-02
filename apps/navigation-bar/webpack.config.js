@@ -1,3 +1,16 @@
+const endpoints = {
+  "feed": 'http://localhost:4201/remoteEntry.js',
+  "user": 'http://localhost:4202/remoteEntry.js',
+  "navigation_bar": 'http://localhost:4204/remoteEntry.js',
+  "login": 'http://localhost:4203/remoteEntry.js',
+}
+
+function normalizeMappings(endpoints) {
+  const mappings = {};
+  Object.entries(endpoints).forEach(value => mappings[value[0]] = value[0]+'@'+ value[1])
+  return mappings;
+}
+
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const mf = require("@angular-architects/module-federation/webpack");
 const path = require("path");
@@ -23,13 +36,15 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-
-        shared: share({
+      remotes: normalizeMappings(endpoints),
+      shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
+          "@ngrx/store": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@ngrx/effects": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@ngrx/entity": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           ...sharedMappings.getDescriptors()
         })
 

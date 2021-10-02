@@ -10,6 +10,7 @@ export const environment = {
     login: 'http://localhost:4203/remoteEntry.js',
     navigation_bar: 'http://localhost:4204/remoteEntry.js',
   }
+
 };
 
 /*
