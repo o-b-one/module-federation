@@ -1,0 +1,18 @@
+<header>
+  <nav mat-tab-nav-bar >
+    <a mat-tab-link *ngFor="let link of links"
+       [routerLink]="link.path"
+       routerLinkActive="active"> {{link.display}} </a>
+  </nav>
+  <mfe-sideload
+    [isWebComponent]="false"
+    [props]="{userId: '1111'}"
+    [item]="{
+      remoteEntry: 'http://localhost:4204',
+      remoteName: 'user',
+      exposedModule: './public-api',
+      elementName: 'mfe-user-info',
+      moduleName:'UserInfoModule'
+    }"
+  ></mfe-sideload>
+</header>

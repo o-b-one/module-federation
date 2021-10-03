@@ -6,6 +6,7 @@ import {ReactiveComponentModule} from "@ngrx/component";
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import {UserInfoModule} from "user/public-api";
 import {AuthModule} from "../../../../../libs/auth/src";
+import {SideloadModule} from "../../../../../libs/sideload/src";
 
 
 
@@ -20,6 +21,7 @@ import {AuthModule} from "../../../../../libs/auth/src";
     MatTabsModule,
     AuthModule,
     RouterModule,
+    SideloadModule,
     RouterModule.forChild([
       {
         path: '',

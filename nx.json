@@ -58,6 +58,9 @@
       "tags": [],
       "implicitDependencies": ["shell"]
     },
+    "sideload": {
+      "tags": []
+    },
     "user": {
       "tags": []
     },

@@ -23,7 +23,10 @@ export class AuthService {
         return authorized
           ? of({
             ...user,
-            ...{authorized: true},
+            ...{
+              authorized: true,
+              xsrf: 'noWayThisIsXSRFToken',
+            },
             ...this.getStoredData()
           })
           : throwError('NOT_AUTHORIZED');
