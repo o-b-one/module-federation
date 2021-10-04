@@ -42,4 +42,8 @@ export class UserFacade implements IUserFacade{
     return this.userService.setUser(id, data);
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
 }

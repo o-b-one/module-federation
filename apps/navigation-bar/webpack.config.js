@@ -1,7 +1,6 @@
 const endpoints = {
   "feed": 'http://localhost:4201/remoteEntry.js',
   "user": 'http://localhost:4202/remoteEntry.js',
-  "navigation_bar": 'http://localhost:4204/remoteEntry.js',
   "login": 'http://localhost:4203/remoteEntry.js',
 }
 
@@ -36,7 +35,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      name: 'navigationBar',
       remotes: normalizeMappings(endpoints),
+      filename: "remoteEntry.js",
       shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
@@ -46,7 +47,10 @@ module.exports = {
           "@ngrx/effects": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@ngrx/entity": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           ...sharedMappings.getDescriptors()
-        })
+        }),
+      exposes: {
+        './public-api': './apps/navigation-bar/public-api.ts'
+      }
 
     }),
     sharedMappings.getPlugin()

@@ -15,7 +15,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: false
-  },   
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -23,32 +23,23 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      
-        // For remotes (please adjust)
-        // name: "login",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './apps/login/src/app/app.component.ts',
-        // },        
-        
-        // For hosts (please adjust)
-        // remotes: {
-        //     "feed": "feed@http://localhost:4201/remoteEntry.js",
-        //     "navigationBar": "navigationBar@http://localhost:4200/remoteEntry.js",
-        //     "shell": "shell@http://localhost:4200/remoteEntry.js",
-        //     "user": "user@http://localhost:4202/remoteEntry.js",
 
-        // },
+        // For remotes (please adjust)
+        name: "login",
+        filename: "remoteEntry.js",
+        exposes: {
+            './public-api': './apps/login/public-api',
+        },
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
           ...sharedMappings.getDescriptors()
         })
-        
+
     }),
     sharedMappings.getPlugin()
   ],

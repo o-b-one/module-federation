@@ -7,6 +7,8 @@ import {filter, map, pluck} from "rxjs/operators";
 import {IAuthState} from "../store/auth.reducer";
 import {IAuthFacade} from "./auth-facade.interface";
 import {Injectable} from "@angular/core";
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -16,7 +18,9 @@ export class AuthFacade implements IAuthFacade {
 
   private authorizationTriggered = false;
 
-  constructor(private _store: Store<IStateWithAuthFeature>) {
+  constructor(private _store: Store<IStateWithAuthFeature>,
+              private router: Router,
+              private authService: AuthService) {
   }
 
 
@@ -34,5 +38,11 @@ export class AuthFacade implements IAuthFacade {
 
   isAuthorized(): Observable<boolean> {
     return this.getActiveUser().pipe(pluck('authorized'));
+  }
+
+  logout() {
+    this.authService.logout();
+    this.authorize(true);
+    this.router.navigateByUrl('/');
   }
 }

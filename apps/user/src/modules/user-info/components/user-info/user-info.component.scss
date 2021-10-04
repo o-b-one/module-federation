@@ -1,0 +1,18 @@
+.avatar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  &.size- {
+    &small {
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    &large {
+
+    }
+  }
+}

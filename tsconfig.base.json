@@ -17,10 +17,10 @@
     "baseUrl": ".",
     "paths": {
       "@mfe/auth": ["libs/auth/src/index.ts"],
-      "@mfe/feed": ["apps/feed/public-api.ts"],
-      "@mfe/login": ["apps/login/public-api.ts"],
-      "@mfe/navigation-bar": ["apps/navigation-bar/public-api.ts"],
-      "@mfe/user": ["apps/user/public-api.d.ts"],
+      "@mfe/feed": ["apps/feed/public-api.d.ts"],
+      "@mfe/login": ["apps/login/public-api.d.ts"],
+      "@mfe/navigation-bar": ["apps/navigation-bar/public-api.d.ts"],
+      "@mfe/user": ["apps/user/public-api.types.ts"],
       "@robust-micro-frontend/sideload": ["libs/sideload/src/index.ts"]
     }
   },

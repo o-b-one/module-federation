@@ -35,6 +35,10 @@ export class AuthService {
 
   }
 
+  public logout(): void {
+    localStorage.removeItem(this.testAuthorizationKey);
+  }
+
   private getStoredData() {
     const storedData = localStorage.getItem(this.testAuthorizationKey);
     try {

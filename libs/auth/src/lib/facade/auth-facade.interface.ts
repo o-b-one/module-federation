@@ -5,4 +5,5 @@ export interface IAuthFacade{
   authorize(): Observable<IAuthState>;
   isAuthorized(): Observable<boolean>;
   getActiveUser(): Observable<IAuthState>;
+  logout(): void;
 }

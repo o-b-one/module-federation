@@ -22,7 +22,7 @@ import {LoadRemoteModuleOptions} from "@angular-architects/module-federation-run
 })
 export class SideloadComponent implements OnInit, AfterContentInit, OnDestroy {
   @Input()
-  props: Record<string, string>;
+  props: Record<string, any>;
 
   @Input()
   events: Record<string, (...args: any[]) => void>;
@@ -43,7 +43,9 @@ export class SideloadComponent implements OnInit, AfterContentInit, OnDestroy {
 
   constructor(
     route: ActivatedRoute,
-    private compiler: Compiler
+    private injector: Injector,
+    private resolver: ComponentFactoryResolver,
+    private compiler: Compiler,
   ) {
     this.routerSnapshot = route.snapshot;
   }
@@ -81,10 +83,17 @@ export class SideloadComponent implements OnInit, AfterContentInit, OnDestroy {
       this.setEvents();
       this.vc.element.nativeElement.appendChild(this.element);
     }else{
-      const compilationRslt = await this.compiler.compileModuleAndAllComponentsSync(loadedModule[this.item.moduleName]);
-      const componentToCreate = compilationRslt.componentFactories.find(c => c.selector === this.item.elementName);
-      if(componentToCreate) {
-        this.componentInstance = this.vc.createComponent(componentToCreate);
+      const compilationRslt = await this.compiler.compileModuleSync(loadedModule[this.item.moduleName]);
+      debugger;
+      console.log('compilationRslt', compilationRslt)
+      const componentToCreate = loadedModule[this.item.componentName];
+      const componentCreator = this.resolver.resolveComponentFactory(componentToCreate)
+      if(componentCreator) {
+        this.componentInstance = this.vc.createComponent(componentCreator,
+          undefined,
+          this.injector,
+          undefined,
+          compilationRslt.create(this.injector));
         this.setAngularComponentProps(this.props);
         this.setAngularComponentEvents(this.events);
         this.componentInstance.changeDetectorRef.detectChanges();

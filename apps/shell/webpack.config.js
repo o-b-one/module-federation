@@ -12,8 +12,8 @@ sharedMappings.register(
 const endpoints = {
   "feed": 'http://localhost:4201/remoteEntry.js',
   "user": 'http://localhost:4202/remoteEntry.js',
-  "navigation_bar": 'http://localhost:4204/remoteEntry.js',
   "login": 'http://localhost:4203/remoteEntry.js',
+  "navigationBar": 'http://localhost:4204/remoteEntry.js',
 }
 
 function normalizeMappings(endpoints) {

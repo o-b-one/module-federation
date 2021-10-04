@@ -2,8 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {IUser} from "@mfe/auth";
 import {UserFacade} from "user/public-api";
-import {pluck, take} from "rxjs/operators";
-import {IUserFacade} from "@mfe/user";
+import {pluck, shareReplay} from "rxjs/operators";
+import {IUserFacade} from '@mfe/user';
 
 @Component({
   selector: 'mfe-navigation-bar',
@@ -18,21 +18,20 @@ export class NavigationBarComponent implements OnInit {
   }];
 
   activeUserId$: Observable<string>;
-  userInfoComponent: any;
+  activeUserName$: Observable<string>;
 
   constructor(@Inject(UserFacade) private userService: IUserFacade) {
-    this.activeUserId$ = this.userService.getActiveUser().pipe(pluck('id'));
-    this.userService.getActiveUser().pipe(take(1)).subscribe((data: IUser) =>{
-      console.log('nav-bar', data);
-    })
+    const activeUser$: Observable<IUser> = this.userService.getActiveUser().pipe(shareReplay(1));
+    this.activeUserId$ = activeUser$.pipe(pluck('id'));
+    this.activeUserName$ = activeUser$.pipe(pluck('name'));
 
   }
 
   ngOnInit() {
-    // this.userInfoComponent = await loadRemoteModule({
-    //   remoteEntry: environment.micro_frontend.user,
-    //   remoteName: 'user',
-    //   exposedModule: './public-api'
-    // }).then(({UserInfoComponent}) => UserInfoComponent);
+  }
+
+
+  logout() {
+    this.userService.logout()
   }
 }

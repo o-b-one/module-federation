@@ -8,4 +8,6 @@ export interface IUserFacade {
   getUser(id: string): Observable<IUser | null>;
 
   setUser(id: string, data: IUser): Observable<IUser | null>;
+
+  logout(): void;
 };
