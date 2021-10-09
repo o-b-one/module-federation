@@ -1,7 +1,7 @@
 <section>
   <ng-container *ngIf="user$ | ngrxPush as user">
     <section [class]="'size-' + size" class="avatar-container">
-      <img [src]="defaultUrl" class="avatar" />
+      <img [src]="user.pic || defaultUrl" class="avatar" />
       <h2 *ngIf="size !== 'small'">{{user.name}}</h2>
     </section>
   </ng-container>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {AuthFacade} from "@mfe/auth";
 
 @Component({
   selector: 'robust-micro-frontend-root',
@@ -9,8 +8,7 @@ import {AuthFacade} from "@mfe/auth";
 export class AppComponent {
   title = 'user';
 
-  constructor(private authFacade: AuthFacade) {
-        authFacade.authorize().subscribe();
+  constructor() {
   }
 
 }

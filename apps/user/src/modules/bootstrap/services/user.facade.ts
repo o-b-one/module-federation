@@ -1,40 +1,46 @@
-import {Injectable} from "@angular/core";
+import {Injectable, ModuleWithProviders} from "@angular/core";
 import {UserService} from "./user.service";
 import {AuthFacade, IUser} from "@mfe/auth";
-import {switchMap} from "rxjs/operators";
+import {switchMap, take} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 import {IUserFacade} from "../interfaces/user-facade.interface";
 import {environment} from "../../../../../shell/src/environments/environment";
 import {ILoadComponentConfiguration} from "@mfe/sideload";
+import {BootstrapDependenciesModule} from "../bootstrap-dependencies.module";
+import {Store} from "@ngrx/store";
+import {getUser, IStateWithUserFeature} from "../store/user.selector";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserFacade implements IUserFacade{
+  private readonly BASE_CONF: Partial<ILoadComponentConfiguration> = {
+    remoteEntry: environment.micro_frontend.user,
+    remoteName: 'user',
+    exposedModule: './public-api',
+  };
 
   constructor(
     private userService: UserService,
-    private authService: AuthFacade
+    private authService: AuthFacade,
+    private store: Store<IStateWithUserFeature>,
   ) {
   }
 
   getActiveUser(): Observable<IUser> {
-      // return of({
-      //   id: '2222',
-      //   name: 'testing',
-      //   roles: ['tester'],
-      // })
     return this.authService.authorize();
   }
 
   getUser(id: string): Observable<IUser | null>{
-    return this.getActiveUser()
+    return this.store.select(getUser(id))
       .pipe(
+        take(1),
         switchMap(user => {
-          if(user.id === id){
-            return of(user)
-          }else{
+          if(!user){
             return this.userService.getUser(id);
+          }
+          else{
+            return of(user)
           }
         })
       )
@@ -49,23 +55,9 @@ export class UserFacade implements IUserFacade{
   }
 
   getComponentLoadObject(component: string): ILoadComponentConfiguration {
-    const module = this.getComponentModule(component);
     return {
-      remoteEntry: environment.micro_frontend.user,
-      remoteName: 'user',
-      exposedModule: './public-api',
-      componentName: component,
-      moduleName: module as string
+      ...this.BASE_CONF as ILoadComponentConfiguration,
+      componentName: component
     };
-  }
-
-  private getComponentModule(component: string) {
-    switch (component?.toUpperCase()){
-      case 'USERINFOCOMPONENT':
-        return 'UserInfoModule'
-      default:
-        return null
-
-    }
   }
 }

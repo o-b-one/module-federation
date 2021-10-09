@@ -8,6 +8,7 @@ import {AppComponent} from "./app.component";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {AuthModule} from "../../../../libs/auth/src";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import {AuthModule} from "../../../../libs/auth/src";
     RouterModule,
     RouterModule.forRoot([], {initialNavigation: 'enabledBlocking'}),
     StoreModule.forRoot([]),
+    StoreDevtoolsModule.instrument({}),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,
     BootstrapModule,

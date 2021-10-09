@@ -1,7 +1,7 @@
-export interface IUser{
-    id: string;
-    name: string;
-    xsrf?: string;
-    roles: string[];
-    loading?: boolean;
+export interface IUser {
+  id: string;
+  name: string;
+  roles: string[];
+  pic?: string;
+  xsrf?: string;
 };

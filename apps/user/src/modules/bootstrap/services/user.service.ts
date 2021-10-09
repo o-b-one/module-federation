@@ -2,7 +2,10 @@ import {Injectable} from "@angular/core";
 import {USERS} from "../../../../../../mocks/users.mock";
 import {AuthFacade, IAuthState, IUser} from "@mfe/auth";
 import {Observable, of} from "rxjs";
-import {filter, map, shareReplay} from "rxjs/operators";
+import {filter, map, shareReplay, switchMap} from "rxjs/operators";
+import {Store} from "@ngrx/store";
+import {IStateWithUserFeature} from "../store/user.selector";
+import {UpdateUsers} from "../store/user.action";
 
 
 @Injectable({
@@ -12,7 +15,8 @@ export class UserService {
   private activeUser$: Observable<IAuthState>;
 
   constructor(
-    private authFacade: AuthFacade
+    private authFacade: AuthFacade,
+    private store: Store<IStateWithUserFeature>
   ) {
     this.activeUser$ = this.authFacade.getActiveUser().pipe(
       filter(u => u.authorized),
@@ -30,27 +34,27 @@ export class UserService {
 
   setUser(id: string, value: IUser): Observable<IUser | null> {
     return this.activeUser$.pipe(
-      map(activeUser => {
+      switchMap(async activeUser => {
         let isActiveUser = false;
         if (id === activeUser.id) {
           isActiveUser = true;
         }
         const user = this.findUser(id);
-        return {user, isActiveUser};
+        return {user: {...user, ...value}, isActiveUser};
       }),
       map(({user, isActiveUser}) => {
-        if (user) {
-          user = Object.assign({}, user, value);
-          if (isActiveUser) {
-            delete (user as any).xsrf;
-            localStorage.setItem('test_is_authorized', JSON.stringify(user));
-            this.authFacade.authorize(true);
-          }
+        this.store.dispatch(UpdateUsers({users: [user as IUser]}));
+        if(isActiveUser) {
+          this.authFacade.authorize(true);
         }
         return user;
       })
     )
 
+  }
+
+  getUsers(ids: string[]) {
+    return of(USERS.filter(u => ids.includes(u.id)));
   }
 
   private findUser(id: string) {

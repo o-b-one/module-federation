@@ -4,6 +4,7 @@ import {AuthorizationFailed, AuthorizationStarted, AuthorizationSucceed} from '.
 
 export interface IAuthState extends IUser{
   authorized: boolean;
+  loading?: boolean;
 }
 
 export const initialState: IAuthState = {

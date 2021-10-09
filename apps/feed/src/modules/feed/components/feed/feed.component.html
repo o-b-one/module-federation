@@ -1,0 +1,7 @@
+<h1>{{greeting}} {{userName$ | ngrxPush}}!</h1>
+<h2>Enjoy your updated feed</h2>
+
+<section class="feed-content">
+  <mfe-feed-item class="feed-item" *ngFor="let item of feed$ | ngrxPush"
+                 [item]="item"></mfe-feed-item>
+</section>

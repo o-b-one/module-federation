@@ -10,16 +10,26 @@ export class FeedService {
     return of({
       feed: [
         {
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean diam nibh, consequat volutpat urna vitae, luctus tristique quam. Vivamus eget justo et nulla hendrerit accumsan a sed lectus. Duis a ante eu nisl egestas efficitur et eget nulla. Vestibulum in sodales sem. Sed imperdiet viverra neque. Cras eu sem vel magna dapibus vehicula ac id lectus. Integer dictum, magna vel tincidunt tincidunt, augue turpis imperdiet eros, at cursus ante urna eu nibh. Sed congue aliquet venenatis.',
-          userId: '1111',
-          date: '06/11/2021',
+          content: 'Behold, the Micro-Services chaos is coming to the Frontend.',
+          userId: '1',
+          date: '11/06/2021',
         },
         {
-          content: 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus mollis consequat turpis, ut laoreet lorem gravida ac. Sed quis pellentesque felis, sit amet luctus erat. Vestibulum auctor tristique turpis ut porttitor. Quisque interdum justo sit amet magna convallis tincidunt. Vestibulum vestibulum, quam cursus pretium ullamcorper, leo nunc maximus ipsum, id faucibus nunc nulla non nisi. Praesent ut nibh nibh. Nulla interdum rutrum tellus sit amet finibus. Phasellus ornare metus ac lectus iaculis porta. Donec quis est sollicitudin, faucibus neque id, lacinia nisl.',
-          userId: '2222',
-          date: '05/11/2021',
+          content: 'If you strike me down, I shall become more powerful than you can possibly imagine.',
+          userId: '2',
+          date: '11/05/2021',
         },
-      ]
+        {
+          content: 'All our dreams can come true, if we have the courage to pursue them.',
+          userId: '3',
+          date: '11/06/2021',
+        },
+        {
+          content: 'The way to get started is to quit talking and begin doing.\n',
+          userId: '3',
+          date: '11/04/2021',
+        },
+      ].sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() )
     })
   }
 

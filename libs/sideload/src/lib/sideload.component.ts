@@ -97,14 +97,12 @@ export class SideloadComponent implements OnInit, AfterContentInit, OnDestroy {
       this.initWebComponent();
     } else {
       this.initNgComponent(
-        loadedModule[this.configuration.componentName],
-        loadedModule[this.configuration.moduleName as string]
+        loadedModule[this.configuration.componentName]
       );
     }
   }
 
-  private async initNgComponent(component: Type<unknown>, module: Type<unknown>) {
-    // const compilationRslt = await this.compiler.compileModuleAndAllComponentsAsync(module);
+  private async initNgComponent(component: Type<unknown>) {
     const componentCreator = this.resolver.resolveComponentFactory(component)
     if (componentCreator) {
       try {
@@ -115,7 +113,7 @@ export class SideloadComponent implements OnInit, AfterContentInit, OnDestroy {
           // compilationRslt.ngModuleFactory.create(this.injector)
         );
       } catch (e){
-        debugger;
+        // debugger;
         console.error(e);
       }
       this.setAngularComponentProps(this.props);

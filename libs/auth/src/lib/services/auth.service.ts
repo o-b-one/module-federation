@@ -19,15 +19,14 @@ export class AuthService {
   public authorizeUser(): Observable<IUser> {
     return this.isAuthorized().pipe(
       switchMap(authorized => {
-        const user = USERS.find(u => u.id === '1111');
+        const user = USERS.find(u => u.id === '1');
         return authorized
           ? of({
-            ...user,
+            ...user as IUser,
             ...{
               authorized: true,
               xsrf: 'noWayThisIsXSRFToken',
-            },
-            ...this.getStoredData()
+            }
           })
           : throwError('NOT_AUTHORIZED');
       })
@@ -39,12 +38,4 @@ export class AuthService {
     localStorage.removeItem(this.testAuthorizationKey);
   }
 
-  private getStoredData() {
-    const storedData = localStorage.getItem(this.testAuthorizationKey);
-    try {
-      return storedData ? JSON.parse(storedData) : {}
-    } catch (e) {
-      return {};
-    }
-  }
 }

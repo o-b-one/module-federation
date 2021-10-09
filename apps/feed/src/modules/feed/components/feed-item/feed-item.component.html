@@ -1,0 +1,14 @@
+<mat-card>
+  <section class="feed-header">
+    <mat-card-header>
+      <mat-card-title class="feed-header">
+        <mfe-sideload [props]="{userId: item.userId}"
+                      [configuration]="component"></mfe-sideload>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-subtitle>
+    <span>{{item.date | date}}</span>
+  </mat-card-subtitle>
+  </section>
+  <mat-card-content>{{item.content}}</mat-card-content>
+</mat-card>
