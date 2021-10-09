@@ -1,9 +1,9 @@
-.avatar {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+.avatar-container {
   &.size- {
     &small {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       width: 24px;
       height: 24px;
       background: transparent;
@@ -14,5 +14,10 @@
     &large {
 
     }
+  }
+  .avatar{
+    overflow: hidden;
+    border-radius: 100%;
+    width: 48px;
   }
 }

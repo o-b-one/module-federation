@@ -1,5 +1,6 @@
 import {Observable} from "rxjs";
 import { IUser } from "@mfe/auth";
+import {ILoadComponentConfiguration} from "@mfe/sideload";
 
 
 export interface IUserFacade {
@@ -10,4 +11,6 @@ export interface IUserFacade {
   setUser(id: string, data: IUser): Observable<IUser | null>;
 
   logout(): void;
+
+  getComponentLoadObject(component: string): ILoadComponentConfiguration;
 };

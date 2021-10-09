@@ -1,6 +1,8 @@
-<ng-container *ngIf="user$ | ngrxPush as user">
-  <mat-card [class]="'size-' + size" class="avatar">
-    <img mat-card-avatar [src]="defaultUrl" />
-    <mat-card-title *ngIf="size !== 'small'">{{user.name}}</mat-card-title>
-  </mat-card>
-</ng-container>
+<section>
+  <ng-container *ngIf="user$ | ngrxPush as user">
+    <section [class]="'size-' + size" class="avatar-container">
+      <img [src]="defaultUrl" class="avatar" />
+      <h2 *ngIf="size !== 'small'">{{user.name}}</h2>
+    </section>
+  </ng-container>
+</section>

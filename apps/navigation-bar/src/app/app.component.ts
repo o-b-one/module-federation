@@ -1,10 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthFacade} from "@mfe/auth";
-import {Observable} from "rxjs";
-import {pluck, take} from "rxjs/operators";
-import {loadRemoteModule} from "@angular-architects/module-federation";
-import {environment} from "../../../shell/src/environments/environment";
-import {UserFacade} from "../../../user/src/modules/bootstrap/services/user.facade";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'robust-micro-frontend-root',

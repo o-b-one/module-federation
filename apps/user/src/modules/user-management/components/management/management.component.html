@@ -1,5 +1,7 @@
 <section *ngIf="user$ | ngrxPush as user">
-  <mfe-user-info [userId]="user.id"></mfe-user-info>
+  <mat-card>
+    <mfe-user-info [userId]="user.id"></mfe-user-info>
+  </mat-card>
   <form [formGroup]="userDetailsForm" class="centered">
     <ng-container *ngFor="let item of userDetailsForm.controls | keyvalue ">
       <mat-form-field appearance="standard">

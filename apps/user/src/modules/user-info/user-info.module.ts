@@ -15,9 +15,7 @@ import {ReactiveComponentModule} from "@ngrx/component";
   ],
   imports: [
     CommonModule,
-    ReactiveComponentModule,
-    MatCardModule,
-
+    ReactiveComponentModule
   ]
 })
 export class UserInfoModule { }

@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Observable, of, throwError} from "rxjs";
-import {IUser} from "../interfaces/user.interface";
+import {IUser} from "@mfe/auth";
 import {switchMap} from "rxjs/operators";
-import {USERS} from "../../../../../apps/user/src/modules/user-management/constants/users.mock";
+import {USERS} from "../../../../../mocks/users.mock";
 
 @Injectable({
   providedIn: 'root'

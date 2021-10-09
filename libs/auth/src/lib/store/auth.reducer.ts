@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import {IUser} from '../interfaces/user.interface';
-import {AuthroizationFailed, AuthroizationStarted, AuthroizationSucceed} from './auth.action';
+import {AuthorizationFailed, AuthorizationStarted, AuthorizationSucceed} from './auth.action';
 
 export interface IAuthState extends IUser{
   authorized: boolean;
@@ -17,7 +17,7 @@ export const initialState: IAuthState = {
 
 export const authReducer = createReducer(
   initialState,
-  on(AuthroizationStarted, (state) => ({...state, loading: true})),
-  on(AuthroizationSucceed, (state, {user}) => ({...state, ...user, loading: false})),
-  on(AuthroizationFailed, _ => ({...initialState}))
+  on(AuthorizationStarted, (state) => ({...state, loading: true})),
+  on(AuthorizationSucceed, (state, {user}) => ({...state, ...user, loading: false})),
+  on(AuthorizationFailed, _ => ({...initialState}))
 );

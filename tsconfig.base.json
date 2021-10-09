@@ -15,15 +15,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "preserveSymlinks": true,
     "paths": {
-      "@mfe/auth": ["libs/auth/src/index.ts"],
       "@mfe/feed": ["apps/feed/public-api.d.ts"],
       "@mfe/login": ["apps/login/public-api.d.ts"],
       "@mfe/navigation-bar": ["apps/navigation-bar/public-api.d.ts"],
-      "@mfe/user": ["apps/user/public-api.types.ts"],
-      "@robust-micro-frontend/sideload": ["libs/sideload/src/index.ts"]
+      "@mfe/user": ["apps/user/public-api.d.ts"],
+      "@mfe/auth": ["libs/auth/src/index.ts"],
+      "@mfe/sideload": ["libs/sideload/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],
-  "include": ["*.d.ts"]
+  "include": ["*.d.ts", "decl.d.ts"]
 }

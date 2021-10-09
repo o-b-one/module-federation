@@ -1,31 +1,14 @@
-<header>
-  <nav class="navbar-wrapper" mat-tab-nav-bar [backgroundColor]="'primary'">
-    <section>
-      <a mat-tab-link *ngFor="let link of links"
-       [routerLink]="link.path"
-       routerLinkActive="active"> {{link.display}} </a>
-    </section>
-    <mfe-sideload [matMenuTriggerFor]="menu"
-                  [isWebComponent]="false"
-                  [props]="{
-                    userId: (activeUserId$ | ngrxPush),
-                    size: 'small'
-                  }"
-                  [item]="{
-                    remoteEntry: 'http://localhost:4204',
-                    remoteName: 'user',
-                    exposedModule: './public-api',
-                    elementName: 'mfe-user-info',
-                    componentName: 'UserInfoComponent',
-                    moduleName:'UserInfoModule'
-                  }"
-    ></mfe-sideload>
 
-    <mat-menu #menu="matMenu">
-      <span mat-menu-item disabled class="bold"> {{activeUserName$ | ngrxPush}} </span>
-      <button mat-menu-item (click)="logout()">
-        <span>Log Out</span>
-      </button>
-    </mat-menu>
+<mat-toolbar [color]="'primary'" class="navbar-wrapper">
+  <section>
+    <span>Layered Micro-Frontend</span>
+    <nav mat-tab-nav-bar color="white">
+    <a mat-tab-link *ngFor="let link of links"
+       [routerLink]="link.path"
+    routerLinkActive="active"> {{link.display}} </a>
   </nav>
-</header>
+  </section>
+  <section>
+    <mfe-user-avatar></mfe-user-avatar>
+  </section>
+</mat-toolbar>

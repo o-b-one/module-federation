@@ -56,7 +56,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -68,6 +68,10 @@
                 {
                   "replace": "apps/feed/src/environments/environment.ts",
                   "with": "apps/feed/src/environments/environment.prod.ts"
+                },
+                 {
+                  "replace": "apps/shell/src/environments/environment.ts",
+                  "with": "apps/shell/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all",
@@ -195,6 +199,10 @@
                 {
                   "replace": "apps/login/src/environments/environment.ts",
                   "with": "apps/login/src/environments/environment.prod.ts"
+                },
+                 {
+                  "replace": "apps/shell/src/environments/environment.ts",
+                  "with": "apps/shell/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all",
@@ -328,6 +336,10 @@
                 {
                   "replace": "apps/navigation-bar/src/environments/environment.ts",
                   "with": "apps/navigation-bar/src/environments/environment.prod.ts"
+                },
+                 {
+                  "replace": "apps/shell/src/environments/environment.ts",
+                  "with": "apps/shell/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all",
@@ -446,7 +458,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "1.5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -613,6 +625,10 @@
                 {
                   "replace": "apps/user/src/environments/environment.ts",
                   "with": "apps/user/src/environments/environment.prod.ts"
+                },
+                 {
+                  "replace": "apps/shell/src/environments/environment.ts",
+                  "with": "apps/shell/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all",

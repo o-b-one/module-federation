@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -17,27 +18,28 @@ import {MatSelectModule} from "@angular/material/select";
   declarations: [
     ManagementComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ReactiveComponentModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    UserInfoModule,
-    ReactiveFormsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: ManagementComponent
-      }
-    ]),
-    MatOptionModule,
-    MatSelectModule,
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ReactiveComponentModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        UserInfoModule,
+        ReactiveFormsModule,
+        RouterModule.forChild([
+            {
+                path: '',
+                component: ManagementComponent
+            }
+        ]),
+        MatOptionModule,
+        MatSelectModule,
+        CommonModule,
+        MatCardModule
+    ]
 })
 export class UserManagementModule { }

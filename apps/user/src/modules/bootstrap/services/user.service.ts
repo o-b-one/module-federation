@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {USERS} from "../../user-management/constants/users.mock";
+import {USERS} from "../../../../../../mocks/users.mock";
 import {AuthFacade, IAuthState, IUser} from "@mfe/auth";
 import {Observable, of} from "rxjs";
 import {filter, map, shareReplay} from "rxjs/operators";

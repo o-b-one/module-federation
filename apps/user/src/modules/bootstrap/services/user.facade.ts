@@ -4,6 +4,8 @@ import {AuthFacade, IUser} from "@mfe/auth";
 import {switchMap} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 import {IUserFacade} from "../interfaces/user-facade.interface";
+import {environment} from "../../../../../shell/src/environments/environment";
+import {ILoadComponentConfiguration} from "@mfe/sideload";
 
 @Injectable({
   providedIn: 'root'
@@ -46,4 +48,24 @@ export class UserFacade implements IUserFacade{
     this.authService.logout();
   }
 
+  getComponentLoadObject(component: string): ILoadComponentConfiguration {
+    const module = this.getComponentModule(component);
+    return {
+      remoteEntry: environment.micro_frontend.user,
+      remoteName: 'user',
+      exposedModule: './public-api',
+      componentName: component,
+      moduleName: module as string
+    };
+  }
+
+  private getComponentModule(component: string) {
+    switch (component?.toUpperCase()){
+      case 'USERINFOCOMPONENT':
+        return 'UserInfoModule'
+      default:
+        return null
+
+    }
+  }
 }

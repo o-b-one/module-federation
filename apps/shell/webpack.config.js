@@ -2,26 +2,16 @@
 
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const mf = require("@angular-architects/module-federation/webpack");
+const {getEndpoints} = require("../../config/endpoints");
 const path = require("path");
-const share = mf.share;
+const shareAll = mf.shareAll;
 const sharedMappings = new mf.SharedMappings();
 
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
   [/* mapped paths to share */]);
-const endpoints = {
-  "feed": 'http://localhost:4201/remoteEntry.js',
-  "user": 'http://localhost:4202/remoteEntry.js',
-  "login": 'http://localhost:4203/remoteEntry.js',
-  "navigationBar": 'http://localhost:4204/remoteEntry.js',
-}
 
-function normalizeMappings(endpoints) {
-  const mappings = {};
-  Object.entries(endpoints).forEach(value => mappings[value[0]] = value[0]+'@'+ value[1])
-  return mappings;
-}
-
+process.endpoints = process['endpoints'] || getEndpoints('local');
 module.exports = {
   output: {
     uniqueName: "shell",
@@ -38,19 +28,16 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
 
-        remotes: normalizeMappings(endpoints),
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@ngrx/store": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@ngrx/effects": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@ngrx/entity": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
-          ...sharedMappings.getDescriptors()
-        })
-
+      remotes: process['endpoints'],
+      shared: {
+        ...shareAll({
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: 'auto',
+          eager: true
+        }),
+        ...sharedMappings.getDescriptors()
+      }
     }),
     sharedMappings.getPlugin()
   ],

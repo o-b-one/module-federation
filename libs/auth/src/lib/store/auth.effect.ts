@@ -2,7 +2,7 @@ import {createEffect, Actions, ofType} from '@ngrx/effects';
 import { of } from 'rxjs';
 import {catchError, map, skipUntil, switchMap} from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
-import { AuthroizationFailed, AuthroizationStarted, AuthroizationSucceed } from './auth.action';
+import { AuthorizationFailed, AuthorizationStarted, AuthorizationSucceed } from './auth.action';
 import {Injectable} from "@angular/core";
 
 @Injectable({
@@ -11,10 +11,10 @@ import {Injectable} from "@angular/core";
 export class AuthEffect{
 
     authUser$ = createEffect(() => this.actions$.pipe(
-        ofType(AuthroizationStarted),
+        ofType(AuthorizationStarted),
         switchMap(() => this.authService.authorizeUser()),
-        map(user => AuthroizationSucceed({user})),
-        catchError(() => of(AuthroizationFailed()))
+        map(user => AuthorizationSucceed({user})),
+        catchError(() => of(AuthorizationFailed()))
       )
     );
 

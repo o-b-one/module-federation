@@ -2,15 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from "../../../bootstrap/services/user.service";
 import {IUser} from "@mfe/auth";
 import {Observable} from "rxjs";
-import {ReactiveComponentModule} from "@ngrx/component";
-import {CommonModule} from "@angular/common";
-import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'mfe-user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss'],
-  providers: [ReactiveComponentModule, CommonModule, MatCardModule]
 })
 export class UserInfoComponent implements OnInit {
   public readonly defaultUrl: string = 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png';

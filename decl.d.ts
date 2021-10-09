@@ -1,7 +1,4 @@
-
-
-declare module 'auth';
-declare module 'feed';
-declare module 'navigation-bar';
+declare module 'feed/public-api';
+declare module 'navigationBar/public-api';
 declare module 'user/public-api';
-declare module 'login';
+declare module 'login/public-api';

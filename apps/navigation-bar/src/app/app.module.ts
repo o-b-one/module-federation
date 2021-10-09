@@ -7,6 +7,7 @@ import {BootstrapModule} from "../modules/boostrap-module/bootstrap.module";
 import {AppComponent} from "./app.component";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
+import {AuthModule} from "../../../../libs/auth/src";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {EffectsModule} from "@ngrx/effects";
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,
-    BootstrapModule
+    BootstrapModule,
+    AuthModule,
   ],
   bootstrap: [AppComponent],
   declarations: [AppComponent],

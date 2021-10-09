@@ -12,12 +12,7 @@ import {environment} from "../environments/environment";
       {
         path: 'login',
         canActivate: [NotAuthorizedGuard],
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('login/public-api').then(m => m.BootstrapModule)
-          }
-        ]
+        loadChildren: () => import('login/public-api').then(m => m.BootstrapModule)
       },
       {
         path: '',
@@ -35,7 +30,6 @@ import {environment} from "../environments/environment";
           {
             path: 'feed',
             loadChildren: () => import('feed/public-api').then(m => m.BootstrapModule)
-
           },
           {
             path: '',
@@ -44,11 +38,17 @@ import {environment} from "../environments/environment";
           },
           {
             path: '**',
+            outlet: 'navbar',
+            loadChildren: () => import('navigationBar/public-api').then(m => m.BootstrapModule)
+          },
+          {
+            path: '**',
             redirectTo: 'user'
           },
         ]
       },
-    ], {initialNavigation: 'enabledNonBlocking'}),
+    ],
+    {initialNavigation: 'enabledNonBlocking'}),
   ]
 })
 export class AppRoutingModule {

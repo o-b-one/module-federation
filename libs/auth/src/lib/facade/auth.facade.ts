@@ -1,7 +1,6 @@
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {IUser} from '../interfaces/user.interface';
-import {AuthroizationStarted} from '../store/auth.action';
+import {AuthorizationStarted} from '../store/auth.action';
 import {IStateWithAuthFeature, selectAuthFeature} from '../store/auth.selector';
 import {filter, map, pluck} from "rxjs/operators";
 import {IAuthState} from "../store/auth.reducer";
@@ -26,7 +25,7 @@ export class AuthFacade implements IAuthFacade {
 
   authorize(forceAuthorization = false): Observable<IAuthState> {
     if(!this.authorizationTriggered && !forceAuthorization) {
-      this._store.dispatch(AuthroizationStarted());
+      this._store.dispatch(AuthorizationStarted());
       this.authorizationTriggered = true;
     }
     return this.getActiveUser();
