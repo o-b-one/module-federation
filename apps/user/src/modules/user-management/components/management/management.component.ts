@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from "rxjs";
-import {AuthFacade, IAuthState, IUser} from "@mfe/auth";
+import {IUser} from "@mfe/auth";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {filter, shareReplay, switchMap, take, takeUntil} from "rxjs/operators";
 import {UserService} from "../../../bootstrap/services/user.service";
+import {UserFacade} from "../../../bootstrap/services/user.facade";
 
 @Component({
   selector: 'mfe-management',
@@ -12,7 +13,7 @@ import {UserService} from "../../../bootstrap/services/user.service";
 })
 export class ManagementComponent implements OnInit, OnDestroy {
   private destroyed$: Subject<void> = new Subject<void>();
-  user$: Observable<IAuthState> = this.authFacade.getActiveUser().pipe(shareReplay(1));
+  user$: Observable<IUser> = this.userFacade.getActiveUser().pipe(shareReplay(1));
   userDetailsForm: FormGroup;
   roles: Array<{ display: string, code: string }> = [
     {
@@ -26,7 +27,7 @@ export class ManagementComponent implements OnInit, OnDestroy {
   ];
 
   constructor(
-    private authFacade: AuthFacade,
+    private userFacade: UserFacade,
     private formBuilder: FormBuilder,
     private userService: UserService
   ) {
@@ -34,7 +35,7 @@ export class ManagementComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.user$.pipe(
-      filter(user => user.authorized),
+      filter(user => !!user),
       take(1)
     ).subscribe(user => {
       this.initForm(user);
