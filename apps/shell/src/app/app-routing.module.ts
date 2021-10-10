@@ -33,7 +33,7 @@ import {environment} from "../environments/environment";
           },
           {
             path: '',
-            redirectTo: 'user',
+            redirectTo: 'feed',
             pathMatch: 'full'
           },
           {
@@ -43,7 +43,7 @@ import {environment} from "../environments/environment";
           },
           {
             path: '**',
-            redirectTo: 'user'
+            redirectTo: 'feed'
           },
         ]
       },

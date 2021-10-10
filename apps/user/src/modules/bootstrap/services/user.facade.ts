@@ -1,7 +1,7 @@
 import {Injectable, ModuleWithProviders} from "@angular/core";
 import {UserService} from "./user.service";
 import {AuthFacade, IUser} from "@mfe/auth";
-import {switchMap, take} from "rxjs/operators";
+import {map, switchMap, take} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 import {IUserFacade} from "../interfaces/user-facade.interface";
 import {environment} from "../../../../../shell/src/environments/environment";
@@ -28,7 +28,12 @@ export class UserFacade implements IUserFacade{
   }
 
   getActiveUser(): Observable<IUser> {
-    return this.authService.authorize();
+    return this.authService.authorize().pipe(map(
+      user => {
+        // user.name = user.name.toUpperCase();
+        return user;
+      })
+    );
   }
 
   getUser(id: string): Observable<IUser | null>{
@@ -36,13 +41,18 @@ export class UserFacade implements IUserFacade{
       .pipe(
         take(1),
         switchMap(user => {
-          if(!user){
+            if(!user){
             return this.userService.getUser(id);
           }
           else{
             return of(user)
           }
-        })
+        }
+        ),
+        // map((user: any) => {
+        //     user.name = user.name.toUpperCase();
+        //     return user;
+        //   })
       )
   }
 

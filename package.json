@@ -8,7 +8,9 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "build:all": "bash tools/build-all.sh",
+    "start:all": "bash tools/serve-all.sh"
   },
   "private": true,
   "dependencies": {

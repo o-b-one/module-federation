@@ -10,6 +10,7 @@ const prodEndpoints = {
   "user": '../user/remoteEntry.js',
   "login": '../login/remoteEntry.js',
   "navigationBar": '../navigationBar/remoteEntry.js',
+  ...localEndpoints
 }
 
 function normalizeMappings(endpoints) {

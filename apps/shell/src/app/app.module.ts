@@ -25,6 +25,7 @@ import {EffectsModule} from "@ngrx/effects";
     AuthModule,
     RouterModule,
     AppRoutingModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
