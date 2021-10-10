@@ -1,7 +1,9 @@
-<h1>{{greeting}} <span style="  background: var(--user-app-bg)">{{userName$ | ngrxPush}}</span>!</h1>
-<h2>Enjoy your updated feed</h2>
+<section class="wrapper">
+  <h1>{{greeting}} <span style="  background: var(--user-app-bg)">{{userName$ | ngrxPush}}</span>!</h1>
+  <h2>Enjoy your updated feed</h2>
 
-<section class="feed-content">
-  <mfe-feed-item class="feed-item" *ngFor="let item of feed$ | ngrxPush"
-                 [item]="item"></mfe-feed-item>
+  <section class="feed-content">
+    <mfe-feed-item class="feed-item" *ngFor="let item of feed$ | ngrxPush"
+                   [item]="item"></mfe-feed-item>
+  </section>
 </section>

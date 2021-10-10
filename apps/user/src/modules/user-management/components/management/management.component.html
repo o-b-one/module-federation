@@ -1,4 +1,4 @@
-<section *ngIf="user$ | ngrxPush as user">
+<section *ngIf="user$ | ngrxPush as user" class="wrapper">
   <mat-card>
     <mfe-user-info [userId]="user.id"></mfe-user-info>
   </mat-card>
