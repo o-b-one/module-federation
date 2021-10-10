@@ -1,10 +1,11 @@
 .avatar-container {
+  background: var(--user-app-bg);
   &.size- {
     &small {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      background: transparent;
+      padding: 2px;
       border: none;
       box-shadow: none;
       .avatar{
