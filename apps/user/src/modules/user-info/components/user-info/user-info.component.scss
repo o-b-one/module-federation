@@ -4,21 +4,22 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      width: 24px;
-      height: 24px;
       background: transparent;
       border: none;
       box-shadow: none;
+      .avatar{
+        width: 24px;
+        height: 24px;
+      }
     }
 
-    &large {
-
+    &large .avatar{
+      width: 48px;
+      height: 48px;
     }
   }
   .avatar{
     overflow: hidden;
     border-radius: 100%;
-    width: 48px;
-    height: 48px;
   }
 }

@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserService} from "../../../bootstrap/services/user.service";
 import {IUser} from "@mfe/auth";
 import {Observable} from "rxjs";
-import {getUser, IStateWithUserFeature} from "../../../bootstrap/store/user.selector";
+import {IStateWithUserFeature} from "../../../bootstrap/store/user.selector";
 import {Store} from "@ngrx/store";
-import {UserFetchStarted} from "../../../bootstrap/store/user.action";
+import {UserFacade} from "../../../bootstrap/services/user.facade";
 
 @Component({
   selector: 'mfe-user-info',
@@ -20,10 +19,7 @@ export class UserInfoComponent implements OnInit {
   @Input()
   set userId(id: string) {
     this._userId = id;
-    // this.store.dispatch(UserFetchStarted({ids: [id]}));
-    // this.user$ = this.store.select(getUser(id));
-
-    this.user$ = this.userService.getUser(this.userId);
+    this.user$ = this.userFacade.getUser(this.userId);
   }
   get userId(){
     return this._userId;
@@ -31,7 +27,7 @@ export class UserInfoComponent implements OnInit {
 
   constructor(
     private store: Store<IStateWithUserFeature>,
-    private userService: UserService,
+    private userFacade: UserFacade,
   ) { }
 
   ngOnInit(): void {
