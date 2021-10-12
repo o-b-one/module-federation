@@ -1,6 +1,10 @@
 <section class="application-wrapper" [class.label-applications]="label"
 >
   <router-outlet name='navbar'></router-outlet>
+  <mat-slide-toggle
+    (click)="label = !label"
+    [checked]="label"
+  >Label applications</mat-slide-toggle>
   <section class="content-wrapper">
     <router-outlet></router-outlet>
   </section>

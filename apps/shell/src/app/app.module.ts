@@ -10,6 +10,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {AuthModule} from "@mfe/auth";
 import {EffectsModule} from "@ngrx/effects";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +27,7 @@ import {EffectsModule} from "@ngrx/effects";
     AuthModule,
     RouterModule,
     AppRoutingModule,
+    MatSlideToggleModule,
 
   ],
   providers: [],
