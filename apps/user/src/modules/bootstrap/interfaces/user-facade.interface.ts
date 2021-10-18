@@ -13,4 +13,4 @@ export interface IUserFacade {
   logout(): void;
 
   getComponentLoadObject(component: string): ILoadComponentConfiguration;
-};
+}
