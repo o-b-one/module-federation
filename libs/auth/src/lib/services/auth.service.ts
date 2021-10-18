@@ -16,6 +16,11 @@ export class AuthService {
     return of(!!localStorage.getItem(this.testAuthorizationKey));
   }
 
+  public login(username: string, password: string ): Observable<boolean> {
+    localStorage.setItem(this.testAuthorizationKey, JSON.stringify({username}));
+    return of(true)
+  }
+
   public authorizeUser(): Observable<IUser> {
     return this.isAuthorized().pipe(
       switchMap(authorized => {

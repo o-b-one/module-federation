@@ -2,7 +2,7 @@
 >
   <router-outlet name='navbar'></router-outlet>
   <mat-slide-toggle
-    (click)="label = !label"
+    (toggleChange)="label = !label"
     [checked]="label"
   >Label applications</mat-slide-toggle>
   <section class="content-wrapper">

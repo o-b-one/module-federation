@@ -161,7 +161,7 @@
       "projectType": "application",
       "root": "apps/login",
       "sourceRoot": "apps/login/src",
-      "prefix": "robust-micro-frontend",
+      "prefix": "mfe",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:webpack-browser",
@@ -174,7 +174,10 @@
             "tsConfig": "apps/login/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/login/src/favicon.ico", "apps/login/src/assets"],
-            "styles": ["apps/login/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/login/src/styles.scss"
+            ],
             "scripts": [],
             "customWebpackConfig": {
               "path": "apps/login/webpack.config.js"
