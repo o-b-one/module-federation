@@ -18,5 +18,7 @@ Serve all applications build results
  
 > npm run start:all
 
+Go to `localhost:4200` on your browser
+
 Build specific application
-> ng build <application name>
+> ng build \<application name\>
