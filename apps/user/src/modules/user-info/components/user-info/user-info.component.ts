@@ -14,6 +14,8 @@ export class UserInfoComponent implements OnInit {
   public readonly defaultUrl: string = 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png';
   private _userId: string;
   user$: Observable<IUser | undefined | null>;
+
+  @Input()
   size: 'small' | 'large' = 'large';
 
   @Input()

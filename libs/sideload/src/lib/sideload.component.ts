@@ -42,7 +42,7 @@ export class SideloadComponent implements OnInit, AfterContentInit, OnDestroy {
   private load$: Promise<any>;
   private routerSnapshot: ActivatedRouteSnapshot
   private componentInstance: ComponentRef<any>;
-  destroyer$: Subject<void> = new Subject<void>();
+  private destroyer$: Subject<void> = new Subject<void>();
 
   constructor(
     route: ActivatedRoute,
@@ -113,7 +113,6 @@ export class SideloadComponent implements OnInit, AfterContentInit, OnDestroy {
           // compilationRslt.ngModuleFactory.create(this.injector)
         );
       } catch (e){
-        // debugger;
         console.error(e);
       }
       this.setAngularComponentProps(this.props);

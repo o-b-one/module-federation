@@ -5,7 +5,6 @@ import {pluck} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {IFeedItem} from "../../interfaces/feed-item.interface";
 import {select, Store} from "@ngrx/store";
-import {IFeedState} from "../../store/feed.reducer";
 import {getFeed, IStateWithFeedFeature} from "../../store/feed.selector";
 
 @Component({
@@ -17,8 +16,6 @@ export class FeedComponent implements OnInit {
   greeting: string;
   userName$: Observable<string>;
   feed$: Observable<IFeedItem[]>;
-  component = this.userFacade.getComponentLoadObject('UserInfoComponent');
-
 
   constructor(
     private store: Store<IStateWithFeedFeature>,

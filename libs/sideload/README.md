@@ -1,7 +1,11 @@
-# sideload
+# @ng-fe/mfe-loader
+This library contains the utilities to implement layered angular application with anti-corruption layer as discussed on this article to
 
-This library was generated with [Nx](https://nx.dev).
+ 
 
-## Running unit tests
+## Getting Started
 
-Run `nx test sideload` to execute the unit tests.
+
+### Unit-Tests
+
+> npm run test
