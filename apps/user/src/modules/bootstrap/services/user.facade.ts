@@ -1,14 +1,13 @@
 import {Injectable} from "@angular/core";
 import {UserService} from "./user.service";
 import {AuthFacade, IUser} from "@mfe/auth";
-import {map, pluck, switchMap, take} from "rxjs/operators";
+import {map, pluck, switchMap} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 import {IUserFacade} from "../interfaces/user-facade.interface";
 import {environment} from "../../../../../shell/src/environments/environment";
 import {ILoadComponentConfiguration} from "@mfe/sideload";
 import {Store} from "@ngrx/store";
 import {getUser, IStateWithUserFeature} from "../store/user.selector";
-import {UserComponents} from "@mfe/user";
 import {ExportedComponents} from "../../../../components";
 // import * as pAPI from '../../../../public-api';
 
@@ -47,7 +46,7 @@ export class UserFacade implements IUserFacade {
             : this.userService.getUser(id);
         }),
         map((user) => {
-          // this.transformUserName(user);
+          this.transformUserName(user);
           return user;
         })
       )
