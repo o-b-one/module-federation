@@ -46,7 +46,7 @@ export class UserFacade implements IUserFacade {
             : this.userService.getUser(id);
         }),
         map((user) => {
-          this.transformUserName(user);
+          // this.transformUserName(user);
           return user;
         })
       )
