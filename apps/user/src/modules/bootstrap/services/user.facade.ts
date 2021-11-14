@@ -70,7 +70,7 @@ export class UserFacade implements IUserFacade {
 
   private transformUserName(user: IUser | null){
     if(user) {
-      user.name = user.name.toUpperCase();
+      user.name = user?.name?.toUpperCase();
     }
   }
 }
