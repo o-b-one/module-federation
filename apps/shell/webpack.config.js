@@ -1,5 +1,7 @@
 // import {environment} from "./src/environments/environment";
 
+const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
+
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const mf = require("@angular-architects/module-federation/webpack");
 const {getEndpoints} = require("../../config/endpoints");
@@ -39,6 +41,7 @@ module.exports = {
         ...sharedMappings.getDescriptors()
       }
     }),
-    sharedMappings.getPlugin()
+    sharedMappings.getPlugin(),
+    new ExternalTemplateRemotesPlugin()
   ],
 };

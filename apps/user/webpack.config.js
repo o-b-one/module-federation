@@ -1,4 +1,5 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const mf = require("@angular-architects/module-federation/webpack");
 const path = require("path");
 const shareAll = mf.shareAll;
@@ -39,6 +40,7 @@ module.exports = {
       },
 
     }),
-    sharedMappings.getPlugin()
+    sharedMappings.getPlugin(),
+    new ExternalTemplateRemotesPlugin()
   ],
 };

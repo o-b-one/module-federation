@@ -15,12 +15,11 @@ const prodEndpoints = {
 
 function normalizeMappings(endpoints) {
   const mappings = {};
-  Object.entries(endpoints).forEach(value => mappings[value[0]] = value[0]+'@'+ value[1])
+  Object.entries(endpoints).forEach(value => mappings[value[0]] = value[0]+'@'+ value[1]+'?[Date.now()]')
   return mappings;
 }
 
 function getEndpoints(env){
-  console.log(env)
   const endpoints = env.toLowerCase() === 'production'
     ? prodEndpoints
     : localEndpoints;
