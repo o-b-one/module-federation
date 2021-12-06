@@ -15,7 +15,10 @@ const prodEndpoints = {
 
 function normalizeMappings(endpoints) {
   const mappings = {};
-  Object.entries(endpoints).forEach(value => mappings[value[0]] = value[0]+'@'+ value[1]+'?[Date.now()]')
+  Object.entries(endpoints).forEach(value => {
+    value[1] = value[1].startsWith('http') ? value[1] : `[window.location.origin]${value[1]}`;
+    mappings[value[0]] = value[0]+'@'+ value[1]+'?[Date.now()]';
+  });
   return mappings;
 }
 
