@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AuthModule} from "@mfe/auth";
 import {RouterModule} from "@angular/router";
 import {StoreModule} from "@ngrx/store";
 import {storeKey, userReducer} from "./store/user.reducer";
@@ -13,7 +12,6 @@ import {BootstrapDependenciesModule} from "./bootstrap-dependencies.module";
   declarations: [],
   imports: [
     CommonModule,
-    AuthModule,
     StoreModule.forFeature(storeKey, userReducer),
     EffectsModule.forFeature([UserEffect]),
     RouterModule.forChild([

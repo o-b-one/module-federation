@@ -5,9 +5,10 @@ import {IStateWithAuthFeature, selectAuthFeature} from '../store/auth.selector';
 import {filter, map, pluck, switchMap, tap} from "rxjs/operators";
 import {IAuthState} from "../store/auth.reducer";
 import {IAuthFacade} from "./auth-facade.interface";
-import {Injectable} from "@angular/core";
+import {Compiler, Injectable, Injector} from "@angular/core";
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import {AuthModule} from "../auth.module";
 
 
 @Injectable({
@@ -17,8 +18,20 @@ export class AuthFacade implements IAuthFacade {
   private authorizationTriggered = false;
 
   constructor(private _store: Store<IStateWithAuthFeature>,
+              private compiler: Compiler,
+              private injector: Injector,
               private router: Router,
               private authService: AuthService) {
+    this.loadModule();
+
+  }
+
+  /**
+   * Support Module level imports like Store
+   */
+  loadModule(){
+    const module = this.compiler.compileModuleSync(AuthModule);
+    module.create(this.injector);
   }
 
   authorize(forceAuthorization = false): Observable<IAuthState> {

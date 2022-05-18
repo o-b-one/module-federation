@@ -8,9 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import {AuthModule} from "@mfe/auth";
 import {EffectsModule} from "@ngrx/effects";
-import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
@@ -24,7 +22,6 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     }),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,
-    AuthModule,
     RouterModule,
     AppRoutingModule,
     MatSlideToggleModule,

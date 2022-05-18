@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {BootstrapModule} from "../../public-api";
-import {AuthModule} from "../../../../libs/auth/src";
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +14,6 @@ import {AuthModule} from "../../../../libs/auth/src";
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
-    AuthModule,
     BootstrapModule
   ],
   providers: [],

@@ -7,7 +7,6 @@ import {BootstrapModule} from "../modules/boostrap-module/bootstrap.module";
 import {AppComponent} from "./app.component";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
-import {AuthModule} from "../../../../libs/auth/src";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 @NgModule({
@@ -19,8 +18,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     StoreDevtoolsModule.instrument({}),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,
-    BootstrapModule,
-    AuthModule,
+    BootstrapModule
   ],
   bootstrap: [AppComponent],
   declarations: [AppComponent],
