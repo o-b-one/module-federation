@@ -2,7 +2,7 @@
 
 # Layered micro-frontend
 
-[More details on the micro-frontend Chaos article](https://engineering.zoominfo.com/the-micro-frontend-chaos-and-how-to-solve-it)
+[More details on the micro-frontend Chaos article](https://indepth.dev/posts/1485/the-micro-frontend-chaos-and-how-to-solve-it)
 
 [Video of the lecture from AngularUp 2021](https://www.youtube.com/watch?v=wgip0pm4cdI)
 
