@@ -31,7 +31,7 @@
     "@ngrx/entity": "^12.4.0",
     "@ngrx/store": "^12.4.0",
     "@ngrx/store-devtools": "^12.4.0",
-    "@nrwl/angular": "12.9.0",
+    "@nrwl/angular": "15.4.2",
     "document-register-element": "^1.7.2",
     "external-remotes-plugin": "^1.0.0",
     "lodash": "^4.17.21",
@@ -40,7 +40,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.0",
+    "@angular-devkit/build-angular": "~15.0.4",
     "@angular-eslint/eslint-plugin": "~12.3.0",
     "@angular-eslint/eslint-plugin-template": "~12.3.0",
     "@angular-eslint/template-parser": "~12.3.0",
@@ -48,7 +48,7 @@
     "@angular/compiler-cli": "^12.2.0",
     "@angular/language-service": "^12.2.0",
     "@nrwl/cli": "12.9.0",
-    "@nrwl/cypress": "12.9.0",
+    "@nrwl/cypress": "15.4.2",
     "@nrwl/eslint-plugin-nx": "12.9.0",
     "@nrwl/jest": "12.9.0",
     "@nrwl/linter": "12.9.0",
